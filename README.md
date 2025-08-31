@@ -1,26 +1,53 @@
 # 🏥 Healthcare Backend API
 
-A comprehensive Django REST API for healthcare management with JWT authentication, built for Indian healthcare institutions.
+A comprehensive Django REST API for healthcare management with JWT authentication and interactive Swagger documentation.
 
-**🚀 Live API:** https://healthcare-backend-4bbd.onrender.com
+**🚀 Live API:** https://healthcare-backend-4bbd.onrender.com  
+**📖 Interactive Docs:** https://healthcare-backend-4bbd.onrender.com/swagger/
 
 ## ✨ Features
 
+- **📖 Hybrid Documentation** - Beautiful custom docs + Interactive Swagger UI
 - **🔐 JWT Authentication** - Secure user registration/login with role-based access
 - **👥 Patient Management** - Complete CRUD with user-specific data access
 - **👨‍⚕️ Doctor Management** - Doctor profiles with specializations & availability
 - **🔗 Patient-Doctor Mapping** - Advanced assignment system with soft delete
 - **📧 Case-Insensitive Email** - Login works regardless of email case
+- **🧪 One-Click Testing** - Test APIs directly in browser with authentication
 - **🛡️ Security** - Token-based auth with permission controls
 
 ## 🛠️ Tech Stack
 
 - **Django 5.2.5** + **Django REST Framework 3.16.1**
 - **JWT Authentication** (djangorestframework-simplejwt)
+- **Swagger Documentation** (drf-yasg)
 - **PostgreSQL** with Django ORM
 - **Deployed on Render** with environment variables
 
-## 📚 API Documentation
+## 📖 API Documentation Options
+
+### 🏠 Main Documentation Hub
+**https://healthcare-backend-4bbd.onrender.com/** - Beautiful custom documentation with Swagger integration
+
+### 🌐 Interactive Documentation
+- **Swagger UI:** https://healthcare-backend-4bbd.onrender.com/swagger/
+- **ReDoc:** https://healthcare-backend-4bbd.onrender.com/redoc/
+- **Alternative Docs:** https://healthcare-backend-4bbd.onrender.com/docs/
+
+### 🔧 How to Use
+**Option 1: One-Click Testing (Recommended)**
+1. Visit the main documentation page
+2. Click the **"📖 Try Interactive Swagger Documentation"** button
+3. Register/Login to get your JWT token
+4. Click **"Authorize"** in Swagger UI
+5. Enter: `Bearer YOUR_ACCESS_TOKEN`
+6. Test all endpoints with live examples!
+
+**Option 2: Direct Access**
+- Go directly to `/swagger/` for interactive testing
+- Go to `/redoc/` for clean documentation view
+
+## 🚀 Quick API Testing
 
 ### Base URL
 ```
@@ -127,18 +154,26 @@ DELETE /api/mappings/{id}/       # Remove mapping (soft delete)
 }
 ```
 
-## 🧪 Testing with Postman
+## 🧪 Testing Your API
 
+### 🚀 Instant Testing (No Setup Required)
+1. **Visit:** https://healthcare-backend-4bbd.onrender.com/
+2. **Click:** "📖 Try Interactive Swagger Documentation" button
+3. **Register/Login** in Swagger UI to get JWT token
+4. **Authorize** with your token and test all endpoints instantly!
+
+### 🛠️ Manual Testing with External Tools
+Use **Postman**, **curl**, or **HTTPie**:
 1. **Register/Login** → Get access token
 2. **Set Header:** `Authorization: Bearer YOUR_TOKEN`
-3. **Test all endpoints** with Indian names and medical scenarios
+3. **Test all endpoints** with realistic Indian healthcare data
 
-### Quick Test URLs:
-- **Register:** `https://healthcare-backend-4bbd.onrender.com/api/auth/register/`
-- **Login:** `https://healthcare-backend-4bbd.onrender.com/api/auth/login/`
-- **Patients:** `https://healthcare-backend-4bbd.onrender.com/api/patients/`
-- **Doctors:** `https://healthcare-backend-4bbd.onrender.com/api/doctors/`
-- **Mappings:** `https://healthcare-backend-4bbd.onrender.com/api/mappings/`
+### 📱 Quick Access URLs
+- **📖 Main Docs:** https://healthcare-backend-4bbd.onrender.com/
+- **⚡ Swagger UI:** https://healthcare-backend-4bbd.onrender.com/swagger/
+- **📚 ReDoc:** https://healthcare-backend-4bbd.onrender.com/redoc/
+- **🔐 Register:** https://healthcare-backend-4bbd.onrender.com/api/auth/register/
+- **🔑 Login:** https://healthcare-backend-4bbd.onrender.com/api/auth/login/
 
 ## 🗄️ Database Schema
 
@@ -184,10 +219,11 @@ Local API: `http://127.0.0.1:8000`
 
 ## 👨‍💻 Author
 
-**Rahul Kumar**  
+**Rahul Kumar**
 📧 smilerahul847@gmail.com  
-🌟 GitHub: [@RahulK847](https://github.com/RahulK847)
+🌟 GitHub: [@RahulK847](https://github.com/RahulK847)  
+🌐 Portfolio: [rahulk847.live](https://www.rahulk847.live/)
 
 ---
 
-**🏥 Perfect for Indian healthcare institutions like AIIMS, Apollo, Fortis, and Max Healthcare!**
+**🏥 Built with ❤️ for healthcare management systems**

@@ -173,6 +173,33 @@
             font-size: 0.9em;
             white-space: pre-wrap;
         }
+        
+        .swagger-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .swagger-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(52, 152, 219, 0.4);
+            background: linear-gradient(135deg, #2980b9, #3498db);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .swagger-btn:active {
+            transform: translateY(-1px);
+        }
     </style>
 </head>
 <body>
@@ -184,6 +211,16 @@
             
             <div class="base-url">
                 <strong>Base URL:</strong> https://healthcare-backend-4bbd.onrender.com
+            </div>
+            
+            <!-- Interactive Documentation Button -->
+            <div style="margin: 20px 0;">
+                <a href="/swagger/" class="swagger-btn">
+                    📖 Try Interactive Swagger Documentation
+                </a>
+                <p style="margin-top: 10px; color: #7f8c8d; font-size: 0.9em;">
+                    Test APIs directly in your browser with live examples!
+                </p>
             </div>
             
             <div class="tech-stack">
@@ -385,6 +422,21 @@
             <h2>🧪 Testing Instructions</h2>
             
             <div class="endpoint">
+                <strong>Option 1: Interactive Swagger (Recommended)</strong>
+                <div class="description">
+                    <a href="/swagger/" class="swagger-btn" style="padding: 8px 16px; font-size: 0.9em; margin: 5px 0; display: inline-block;">
+                        🚀 Launch Swagger UI
+                    </a>
+                    <br>Test APIs directly in your browser with authentication
+                </div>
+            </div>
+            
+            <div class="endpoint">
+                <strong>Option 2: Manual Testing</strong>
+                <div class="description">Use Postman, curl, or HTTPie</div>
+            </div>
+            
+            <div class="endpoint">
                 <strong>Step 1: Register/Login</strong>
                 <div class="description">Use registration or login endpoint to get access token</div>
             </div>
@@ -398,11 +450,6 @@
             <div class="endpoint">
                 <strong>Step 3: Test CRUD Operations</strong>
                 <div class="description">Create patients, doctors, and test all endpoints</div>
-            </div>
-            
-            <div class="endpoint">
-                <strong>Tools for Testing:</strong>
-                <div class="description">Postman, curl, HTTPie, or any REST client</div>
             </div>
         </div>
     </div>

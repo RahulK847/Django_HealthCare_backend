@@ -8,6 +8,7 @@ python-decouple==3.8
 sqlparse==0.5.3
 tzdata==2025.2
 drf-yasg==1.21.7
+setuptools>=65.0.0
 
 # Production dependencies for Render
 gunicorn==21.2.0

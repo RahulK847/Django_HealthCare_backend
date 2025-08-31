@@ -54,8 +54,9 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-    # Swagger Documentation
-    path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    # Documentation
+    path('', views.api_documentation, name='api_docs'),  # Custom HTML docs with Swagger button
+    path('docs/', views.api_documentation, name='api_documentation'),  # Alternative docs URL
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
