@@ -86,8 +86,8 @@ healthcare_backend/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/rahulk847/healthcare-backend.git
-   cd healthcare-backend
+   git clone https://github.com/RahulK847/Django_HealthCare_backend.git
+   cd Django_HealthCare_backend
    ```
 
 2. **Create and activate virtual environment**
@@ -160,9 +160,9 @@ POST /api/auth/register/
 Content-Type: application/json
 
 {
-    "username": "priyasharma",
-    "email": "priya.sharma@gmail.com",
-    "password": "Priya@123",
+    "username": "aniketgupta",
+    "email": "aniket.gupta@gmail.com",
+    "password": "Aniket@123",
     "phone": "9876543210",
     "role": "patient"  // or "doctor"
 }
@@ -173,8 +173,8 @@ Content-Type: application/json
 {
     "user": {
         "id": 1,
-        "username": "priyasharma",
-        "email": "priya.sharma@gmail.com",
+        "username": "aniketgupta",
+        "email": "aniket.gupta@gmail.com",
         "phone": "9876543210",
         "role": "patient"
     },
@@ -192,8 +192,8 @@ POST /api/auth/login/
 Content-Type: application/json
 
 {
-    "email": "priya.sharma@gmail.com",  // Case-insensitive
-    "password": "Priya@123"
+    "email": "aniket.gupta@gmail.com",  // Case-insensitive
+    "password": "Aniket@123"
 }
 ```
 
@@ -204,9 +204,19 @@ Content-Type: application/json
     "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
     "user": {
         "id": 1,
-        "email": "priya.sharma@gmail.com",
+        "email": "aniket.gupta@gmail.com",
         "role": "patient"
     }
+}
+```
+
+#### Refresh Token
+```http
+POST /api/auth/token/refresh/
+Content-Type: application/json
+
+{
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
 }
 ```
 
@@ -219,8 +229,8 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 Content-Type: application/json
 
 {
-    "name": "Dr. Rajesh Kumar",
-    "email": "dr.rajesh@aiims.edu",
+    "name": "Dr. Arjun Sharma",
+    "email": "dr.arjun@aiims.edu",
     "phone": "9876543210",
     "specialization": "Cardiology",
     "license_number": "MH12345",
@@ -237,26 +247,51 @@ GET /api/doctors/
 Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
-**Response with Indian doctors:**
+**Response:**
 ```json
 [
     {
         "id": 1,
-        "name": "Dr. Rajesh Kumar",
-        "email": "dr.rajesh@aiims.edu",
+        "name": "Dr. Arjun Sharma",
+        "email": "dr.arjun@aiims.edu",
         "specialization": "Cardiology",
         "consultation_fee": "1500.00",
         "availability": "Mon-Fri 9AM-5PM"
     },
     {
         "id": 2,
-        "name": "Dr. Sunita Patel",
-        "email": "dr.sunita@apollo.com",
+        "name": "Dr. Kavya Reddy",
+        "email": "dr.kavya@apollo.com",
         "specialization": "Gynecology",
         "consultation_fee": "1200.00",
         "availability": "Tue-Sat 10AM-6PM"
     }
 ]
+```
+
+#### Get Specific Doctor
+```http
+GET /api/doctors/{id}/
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+#### Update Doctor
+```http
+PUT /api/doctors/{id}/
+Authorization: Bearer YOUR_ACCESS_TOKEN
+Content-Type: application/json
+
+{
+    "name": "Dr. Arjun Sharma",
+    "consultation_fee": 1800.00,
+    // ... other fields
+}
+```
+
+#### Delete Doctor
+```http
+DELETE /api/doctors/{id}/
+Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
 ### 👥 Patient Management
@@ -270,8 +305,8 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 Content-Type: application/json
 
 {
-    "name": "Aarav Singh",
-    "email": "aarav.singh@gmail.com",
+    "name": "Vikram Singh",
+    "email": "vikram.singh@gmail.com",
     "phone": "8765432109",
     "date_of_birth": "1990-05-15",
     "address": "123 CP, New Delhi, 110001",
@@ -293,8 +328,8 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 [
     {
         "id": 1,
-        "name": "Aarav Singh",
-        "email": "aarav.singh@gmail.com",
+        "name": "Vikram Singh",
+        "email": "vikram.singh@gmail.com",
         "phone": "8765432109",
         "date_of_birth": "1990-05-15",
         "address": "123 CP, New Delhi, 110001",
@@ -302,10 +337,35 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
         "blood_group": "B+",
         "emergency_contact": "7890123456",
         "medical_history": "Diabetes, High BP, Regular medication",
-        "created_by": "priya.sharma@gmail.com",
+        "created_by": "aniket.gupta@gmail.com",
         "created_at": "2025-01-31T10:30:00Z"
     }
 ]
+```
+
+#### Get Specific Patient
+```http
+GET /api/patients/{id}/
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+#### Update Patient
+```http
+PUT /api/patients/{id}/
+Authorization: Bearer YOUR_ACCESS_TOKEN
+Content-Type: application/json
+
+{
+    "name": "Vikram Singh",
+    "medical_history": "Diabetes, High BP, Regular medication. Recent checkup normal.",
+    // ... other fields
+}
+```
+
+#### Delete Patient
+```http
+DELETE /api/patients/{id}/
+Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
 ### 🔗 Patient-Doctor Mapping
@@ -338,25 +398,37 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
         "doctor": 1,
         "patient_details": {
             "id": 1,
-            "name": "Aarav Singh",
-            "email": "aarav.singh@gmail.com",
+            "name": "Vikram Singh",
+            "email": "vikram.singh@gmail.com",
             "phone": "8765432109"
         },
         "doctor_details": {
             "id": 1,
-            "name": "Dr. Rajesh Kumar",
+            "name": "Dr. Arjun Sharma",
             "specialization": "Cardiology",
             "consultation_fee": "1500.00"
         },
         "notes": "Regular cardiology checkup for diabetes complications",
         "is_active": true,
         "assigned_date": "2025-01-31T11:00:00Z",
-        "created_by": "priya.sharma@gmail.com"
+        "created_by": "aniket.gupta@gmail.com"
     }
 ]
 ```
 
-## 💡 Usage Examples with Indian Context
+#### Get Doctors for Specific Patient
+```http
+GET /api/mappings/{patient_id}/
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+#### Remove Doctor from Patient (Soft Delete)
+```http
+DELETE /api/mappings/{mapping_id}/
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+## 💡 Usage Examples
 
 ### Complete Workflow Example
 
@@ -364,7 +436,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 ```bash
 curl -X POST http://127.0.0.1:8000/api/auth/register/ \
   -H "Content-Type: application/json" \
-  -d '{"username": "drmeera", "email": "meera@apollo.com", "password": "Doctor@123", "role": "doctor"}'
+  -d '{"username": "drpriya", "email": "priya@apollo.com", "password": "Doctor@123", "role": "doctor"}'
 ```
 
 2. **Create a patient record**:
@@ -372,7 +444,7 @@ curl -X POST http://127.0.0.1:8000/api/auth/register/ \
 curl -X POST http://127.0.0.1:8000/api/patients/ \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{"name": "Rohit Sharma", "email": "rohit.sharma@gmail.com", "phone": "9123456789", "date_of_birth": "1987-04-30", "address": "Mumbai, Maharashtra", "gender": "male", "blood_group": "A+"}'
+  -d '{"name": "Rohan Mehta", "email": "rohan.mehta@gmail.com", "phone": "9123456789", "date_of_birth": "1987-04-30", "address": "Mumbai, Maharashtra", "gender": "male", "blood_group": "A+"}'
 ```
 
 3. **Create doctor profile for specialist**:
@@ -380,7 +452,7 @@ curl -X POST http://127.0.0.1:8000/api/patients/ \
 curl -X POST http://127.0.0.1:8000/api/doctors/ \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{"name": "Dr. Anjali Gupta", "email": "anjali@fortis.com", "specialization": "Endocrinology", "license_number": "DL67890", "experience_years": 12, "consultation_fee": 1800}'
+  -d '{"name": "Dr. Sneha Joshi", "email": "sneha@fortis.com", "specialization": "Endocrinology", "license_number": "DL67890", "experience_years": 12, "consultation_fee": 1800}'
 ```
 
 4. **Assign specialist to patient**:
@@ -397,7 +469,7 @@ curl -X POST http://127.0.0.1:8000/api/mappings/ \
 - `id` (Primary Key)
 - `username` (Unique)
 - `email` (Unique, Case-insensitive)
-- `phone` (Unique, Indian format: 10 digits)
+- `phone` (Unique, 10 digits)
 - `role` (Choice: 'patient' or 'doctor')
 - `password` (Hashed)
 - `is_active`, `is_staff`, `date_joined`
@@ -405,8 +477,8 @@ curl -X POST http://127.0.0.1:8000/api/mappings/ \
 ### Patient Model
 - `id` (Primary Key)
 - `created_by` (Foreign Key to User)
-- `name`, `email`, `phone` (Indian format)
-- `date_of_birth`, `address` (Indian address format)
+- `name`, `email`, `phone`
+- `date_of_birth`, `address`
 - `gender` (male/female/other)
 - `blood_group` (A+, A-, B+, B-, AB+, AB-, O+, O-)
 - `emergency_contact`, `medical_history`
@@ -416,10 +488,10 @@ curl -X POST http://127.0.0.1:8000/api/mappings/ \
 - `id` (Primary Key)
 - `name`, `email`, `phone`
 - `specialization` (Cardiology, Neurology, etc.)
-- `license_number` (Indian medical license format)
+- `license_number` (Medical license format)
 - `experience_years`, `consultation_fee` (in INR)
 - `address` (Hospital/clinic address)
-- `availability` (Indian time format)
+- `availability`
 - `created_at`, `updated_at`
 
 ### PatientDoctorMapping Model
@@ -453,30 +525,49 @@ Use tools like:
 - **HTTPie**: User-friendly HTTP client
 - **Django Admin**: `http://127.0.0.1:8000/admin/`
 
-### Test with Indian Data
-- Test with Indian names (राहुल कुमार, प्रिया शर्मा)
-- Test with Indian phone numbers (10 digits)
-- Test with Indian addresses (Delhi, Mumbai, Bangalore)
-- Test with common Indian medical scenarios
+### Test Scenarios
+- ✅ User registration and login
+- ✅ CRUD operations for all models
+- ✅ Authentication and permissions
+- ✅ Case-insensitive email login
+- ✅ Patient-doctor mapping relationships
+- ✅ Error handling and validation
 
-## 📊 Common Indian Healthcare Scenarios
+## 📊 Sample Test Data
 
-### Sample Test Data
+### Doctors
+- Dr. Arjun Sharma (Cardiologist, AIIMS Delhi)
+- Dr. Kavya Reddy (Gynecologist, Apollo Mumbai)
+- Dr. Rajesh Kumar (Orthopedic, Fortis Bangalore)
 
-**Doctors:**
-- Dr. Rajesh Kumar (Cardiologist, AIIMS Delhi)
-- Dr. Priya Patel (Gynecologist, Apollo Mumbai)
-- Dr. Vikram Singh (Orthopedic, Fortis Bangalore)
+### Patients
+- Vikram Singh (Male, B+, Delhi)
+- Priya Agarwal (Female, A+, Bangalore)
+- Rohan Mehta (Male, O+, Mumbai)
 
-**Patients:**
-- Aarav Singh (Male, B+, Delhi)
-- Kavya Reddy (Female, A+, Bangalore)
-- Arjun Sharma (Male, O+, Mumbai)
-
-**Common Specializations:**
+### Common Specializations
 - Cardiology, Neurology, Orthopedics
 - Gynecology, Pediatrics, ENT
 - Dermatology, Ophthalmology
+
+## 📊 API Response Codes
+
+- `200 OK` - Successful GET, PUT requests
+- `201 Created` - Successful POST requests
+- `204 No Content` - Successful DELETE requests
+- `400 Bad Request` - Validation errors
+- `401 Unauthorized` - Authentication required
+- `403 Forbidden` - Permission denied
+- `404 Not Found` - Resource not found
+- `500 Internal Server Error` - Server errors
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## 📄 License
 
@@ -490,12 +581,10 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-*Built with ❤️ in India using Django and Django REST Framework*
+*Built with ❤️ using Django and Django REST Framework*
 
 ## 🙏 Acknowledgments
 
-- Thanks to Indian healthcare institutions for inspiration
+- Thanks to healthcare institutions for inspiration
 - AIIMS, Apollo, Fortis, Max Healthcare for reference
 - Django and DRF communities for excellent documentation
-
-
