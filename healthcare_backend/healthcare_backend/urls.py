@@ -19,9 +19,9 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('', views.api_documentation, name='api_docs'),  # Homepage with API docs
-    path('docs/', views.api_documentation, name='api_documentation'),  # Alternative docs URL
-    path('health/', views.health_check, name='health_check'),  # Health check
+    path('', views.api_documentation, name='api_docs'), 
+    path('docs/', views.api_documentation, name='api_documentation'), 
+    path('health/', views.health_check, name='health_check'),  
     path('admin/', admin.site.urls),
     path('api/auth/', include('users.urls')),
     path('api/patients/', include('patients.urls')),
