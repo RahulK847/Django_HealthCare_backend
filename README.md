@@ -237,7 +237,7 @@ GET /api/doctors/
 Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
-**Response with Indian doctors:**
+**Response**
 ```json
 [
     {
@@ -356,7 +356,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 ]
 ```
 
-## 💡 Usage Examples with Indian Context
+## 💡 Usage Examples
 
 ### Complete Workflow Example
 
@@ -459,7 +459,7 @@ Use tools like:
 - Test with Indian addresses (Delhi, Mumbai, Bangalore)
 - Test with common Indian medical scenarios
 
-## 📊 Common Indian Healthcare Scenarios
+## 📊 Common Healthcare Scenarios
 
 ### Sample Test Data
 
@@ -490,7 +490,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-*Built with ❤️ in India using Django and Django REST Framework*
 
 ## 🙏 Acknowledgments
 
