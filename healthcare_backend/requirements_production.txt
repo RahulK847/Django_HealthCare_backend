@@ -7,6 +7,7 @@ PyJWT==2.10.1
 python-decouple==3.8
 sqlparse==0.5.3
 tzdata==2025.2
+drf-yasg==1.21.7
 
 # Production dependencies for Render
 gunicorn==21.2.0
