@@ -2,6 +2,9 @@
 # exit on error
 set -o errexit
 
+# Change to the healthcare_backend directory
+cd healthcare_backend
+
 # Install dependencies
 pip install -r requirements_production.txt
 
