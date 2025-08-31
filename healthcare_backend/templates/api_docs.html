@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Backend API Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        .status {
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .api-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .api-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .endpoint {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+        
+        .endpoint:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .method {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 0.9em;
+        }
+        
+        .method.post { background: #e74c3c; }
+        .method.get { background: #27ae60; }
+        .method.put { background: #f39c12; }
+        .method.delete { background: #8e44ad; }
+        
+        .url {
+            font-family: 'Courier New', monospace;
+            background: #ecf0f1;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin: 8px 0;
+            word-break: break-all;
+        }
+        
+        .description {
+            color: #7f8c8d;
+            margin-top: 8px;
+            font-style: italic;
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .tech-item {
+            background: #3498db;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .base-url {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+        }
+        
+        .auth-note {
+            background: #f1c40f;
+            color: #7f6e00;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #f39c12;
+        }
+        
+        .example-data {
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 Healthcare Backend API</h1>
+            <p class="subtitle">Complete REST API for Healthcare Management</p>
+            <div class="status">🚀 Live & Ready</div>
+            
+            <div class="base-url">
+                <strong>Base URL:</strong> https://healthcare-backend-4bbd.onrender.com
+            </div>
+            
+            <div class="tech-stack">
+                <div class="tech-item">Django 5.2.5</div>
+                <div class="tech-item">Django REST Framework</div>
+                <div class="tech-item">JWT Authentication</div>
+                <div class="tech-item">PostgreSQL</div>
+            </div>
+        </div>
+
+        <!-- Authentication APIs -->
+        <div class="api-section">
+            <h2>🔐 Authentication APIs</h2>
+            
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <strong>Register User</strong>
+                <div class="url">/api/auth/register/</div>
+                <div class="description">Register a new user with role (patient/doctor)</div>
+                <div class="example-data">{
+  "username": "rahul_kumar",
+  "email": "rahul.kumar@gmail.com",
+  "password": "Secure@123",
+  "phone": "9876543210",
+  "role": "patient"
+}</div>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <strong>Login User</strong>
+                <div class="url">/api/auth/login/</div>
+                <div class="description">Login with email (case-insensitive) and password</div>
+                <div class="example-data">{
+  "email": "rahul.kumar@gmail.com",
+  "password": "Secure@123"
+}</div>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <strong>Refresh Token</strong>
+                <div class="url">/api/auth/token/refresh/</div>
+                <div class="description">Refresh access token using refresh token</div>
+            </div>
+        </div>
+
+        <!-- Patient Management -->
+        <div class="api-section">
+            <h2>👥 Patient Management APIs</h2>
+            <div class="auth-note">
+                <strong>🔒 Authentication Required:</strong> All endpoints require Bearer token in Authorization header
+            </div>
+            
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <strong>Create Patient</strong>
+                <div class="url">/api/patients/</div>
+                <div class="description">Add a new patient record (user-specific)</div>
+                <div class="example-data">{
+  "name": "Arjun Sharma",
+  "email": "arjun.sharma@gmail.com",
+  "phone": "8765432109",
+  "date_of_birth": "1990-05-15",
+  "address": "123 MG Road, Bangalore",
+  "gender": "male",
+  "blood_group": "B+",
+  "emergency_contact": "9876543210",
+  "medical_history": "No known allergies"
+}</div>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <strong>Get All Patients</strong>
+                <div class="url">/api/patients/</div>
+                <div class="description">Retrieve all patients created by authenticated user</div>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <strong>Get Patient Details</strong>
+                <div class="url">/api/patients/{id}/</div>
+                <div class="description">Get details of specific patient</div>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method put">PUT</span>
+                <strong>Update Patient</strong>
+                <div class="url">/api/patients/{id}/</div>
+                <div class="description">Update patient information</div>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method delete">DELETE</span>
+                <strong>Delete Patient</strong>
+                <div class="url">/api/patients/{id}/</div>
+                <div class="description">Remove patient record</div>
+            </div>
+        </div>
+
+        <!-- Doctor Management -->
+        <div class="api-section">
+            <h2>👨‍⚕️ Doctor Management APIs</h2>
+            <div class="auth-note">
+                <strong>🔒 Authentication Required:</strong> All endpoints require Bearer token
+            </div>
+            
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <strong>Create Doctor</strong>
+                <div class="url">/api/doctors/</div>
+                <div class="description">Add a new doctor profile</div>
+                <div class="example-data">{
+  "name": "Dr. Priya Patel",
+  "email": "priya.patel@aiims.edu",
+  "phone": "7654321098",
+  "specialization": "Cardiology",
+  "license_number": "CARD2025001",
+  "experience_years": 8,
+  "address": "AIIMS Hospital, New Delhi",
+  "consultation_fee": "1500.00",
+  "availability": "Mon-Fri 9AM-5PM"
+}</div>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <strong>Get All Doctors</strong>
+                <div class="url">/api/doctors/</div>
+                <div class="description">Retrieve all doctor profiles</div>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <strong>Get Doctor Details</strong>
+                <div class="url">/api/doctors/{id}/</div>
+                <div class="description">Get details of specific doctor</div>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method put">PUT</span>
+                <strong>Update Doctor</strong>
+                <div class="url">/api/doctors/{id}/</div>
+                <div class="description">Update doctor profile</div>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method delete">DELETE</span>
+                <strong>Delete Doctor</strong>
+                <div class="url">/api/doctors/{id}/</div>
+                <div class="description">Remove doctor profile</div>
+            </div>
+        </div>
+
+        <!-- Patient-Doctor Mapping -->
+        <div class="api-section">
+            <h2>🔗 Patient-Doctor Mapping APIs</h2>
+            <div class="auth-note">
+                <strong>🔒 Authentication Required:</strong> Users can only map their own patients
+            </div>
+            
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <strong>Assign Doctor to Patient</strong>
+                <div class="url">/api/mappings/</div>
+                <div class="description">Create patient-doctor assignment</div>
+                <div class="example-data">{
+  "patient": 1,
+  "doctor": 1,
+  "notes": "Regular cardiology consultation"
+}</div>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <strong>Get All Mappings</strong>
+                <div class="url">/api/mappings/</div>
+                <div class="description">Retrieve all patient-doctor mappings for user</div>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <strong>Get Doctors for Patient</strong>
+                <div class="url">/api/mappings/{patient_id}/</div>
+                <div class="description">Get all doctors assigned to specific patient</div>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method delete">DELETE</span>
+                <strong>Remove Doctor Assignment</strong>
+                <div class="url">/api/mappings/{id}/</div>
+                <div class="description">Remove doctor from patient (soft delete)</div>
+            </div>
+        </div>
+
+        <!-- Testing Instructions -->
+        <div class="api-section">
+            <h2>🧪 Testing Instructions</h2>
+            
+            <div class="endpoint">
+                <strong>Step 1: Register/Login</strong>
+                <div class="description">Use registration or login endpoint to get access token</div>
+            </div>
+            
+            <div class="endpoint">
+                <strong>Step 2: Set Authorization Header</strong>
+                <div class="url">Authorization: Bearer YOUR_ACCESS_TOKEN</div>
+                <div class="description">Include this header in all subsequent requests</div>
+            </div>
+            
+            <div class="endpoint">
+                <strong>Step 3: Test CRUD Operations</strong>
+                <div class="description">Create patients, doctors, and test all endpoints</div>
+            </div>
+            
+            <div class="endpoint">
+                <strong>Tools for Testing:</strong>
+                <div class="description">Postman, curl, HTTPie, or any REST client</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>🏥 Built for Indian Healthcare Institutions | AIIMS • Apollo • Fortis • Max Healthcare</p>
+        <p>👨‍💻 Created by <strong>Rahul Kumar</strong> | GitHub: @RahulK847</p>
+        <p>⚡ Powered by Django REST Framework & JWT Authentication</p>
+    </div>
+</body>
+</html>
