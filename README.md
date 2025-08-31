@@ -247,7 +247,11 @@ GET /api/doctors/
 Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
+<<<<<<< HEAD
 **Response:**
+=======
+**Response**
+>>>>>>> 89389e9a11725572a4828b62565d4d8d3577f06c
 ```json
 [
     {
@@ -416,6 +420,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 ]
 ```
 
+<<<<<<< HEAD
 #### Get Doctors for Specific Patient
 ```http
 GET /api/mappings/{patient_id}/
@@ -428,6 +433,8 @@ DELETE /api/mappings/{mapping_id}/
 Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
+=======
+>>>>>>> 89389e9a11725572a4828b62565d4d8d3577f06c
 ## 💡 Usage Examples
 
 ### Complete Workflow Example
@@ -533,7 +540,11 @@ Use tools like:
 - ✅ Patient-doctor mapping relationships
 - ✅ Error handling and validation
 
+<<<<<<< HEAD
 ## 📊 Sample Test Data
+=======
+## 📊 Common Healthcare Scenarios
+>>>>>>> 89389e9a11725572a4828b62565d4d8d3577f06c
 
 ### Doctors
 - Dr. Arjun Sharma (Cardiologist, AIIMS Delhi)
@@ -581,7 +592,10 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
+<<<<<<< HEAD
 *Built with ❤️ using Django and Django REST Framework*
+=======
+>>>>>>> 89389e9a11725572a4828b62565d4d8d3577f06c
 
 ## 🙏 Acknowledgments
 
